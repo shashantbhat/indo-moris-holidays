@@ -45,5 +45,12 @@
 	},
 	"engines": {
 		"node": ">=20.0.0"
+	},
+	
+	"overrides": {
+		"@remix-run/dev": {
+		"wrangler": "$wrangler"
 	}
+	
+}
 }
