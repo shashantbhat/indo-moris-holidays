@@ -1,7 +1,7 @@
 #:schema node_modules/wrangler/config-schema.json
 # For more details on how to configure Wrangler, refer to:
 # https://developers.cloudflare.com/workers/wrangler/configuration/
-name = "app"
+name = "indo-moris-holidays"
 compatibility_date = "2025-06-13"
 compatibility_flags = ["nodejs_compat"]
 main = "./server.ts"
