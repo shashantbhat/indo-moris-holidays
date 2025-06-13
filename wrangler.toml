@@ -3,6 +3,7 @@
 # https://developers.cloudflare.com/workers/wrangler/configuration/
 name = "app"
 compatibility_date = "2025-06-13"
+compatibility_flags = ["nodejs_compat"]
 main = "./server.ts"
 
 [assets]
