@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 
 export default function Navbar() {
   return (
-    <nav className="relative bg-white shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
@@ -11,7 +11,7 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="hidden md:flex space-x-8 items-center">
-            <Link to="/destinations" className=" text-lg font-mediumhover:underline">
+            <Link to="/destinations" className="text-lg font-medium hover:underline">
               Destinations
             </Link>
             <Link to="/packages" className="text-lg font-medium hover:underline">
