@@ -1,17 +1,37 @@
-const NavBar = () => {
-    return(
-        <>
-            <div className="relative flex justify-center w-full">
-                <div className="absolute w-auto h-auto shrink-0 px-3 py-1 border rounded-xl bg-gray-300 top-10">
-                    indo moris holidays
-                </div>
-            </div>
-            <img 
-                src="/assets/background_pic.jpg"
-                className=""
-            />
-        </>
-    )
-}
+import { Link } from "@remix-run/react";
 
-export default NavBar;
+export default function Navbar() {
+  return (
+    <nav className="relative bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          <div className="flex items-center">
+            <Link to="/" className="text-2xl font-extrabold">
+              Indo Moris Holidays
+            </Link>
+          </div>
+          <div className="hidden md:flex space-x-8 items-center">
+            <Link to="/destinations" className=" text-lg font-mediumhover:underline">
+              Destinations
+            </Link>
+            <Link to="/packages" className="text-lg font-medium hover:underline">
+              Packages
+            </Link>
+            <Link to="/about" className="text-lg font-medium hover:underline">
+              About Us
+            </Link>
+            <Link to="/contact" className="text-lg font-medium hover:underline">
+              Contact
+            </Link>
+            <Link to="/login" className="px-3 py-1 border-2 border-black bg-white hover:bg-black text-black hover:text-white rounded-xl font-medium transition">
+              Login
+            </Link>
+          </div>
+          <div className="md:hidden">
+            {/* Add hamburger menu for mobile if you want */}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
