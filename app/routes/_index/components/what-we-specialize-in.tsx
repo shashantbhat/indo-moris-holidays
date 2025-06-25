@@ -1,9 +1,5 @@
 import React, { useEffect, useRef } from "react";
 
-// Note: In a real Remix app, you'd import GSAP like this:
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 const WhatWeSpecializeIn = () => {
     const containerRef = useRef(null);
     const sectionsRef = useRef([]);
@@ -13,7 +9,8 @@ const WhatWeSpecializeIn = () => {
             title: "Customized Travel Experiences",
             description: "Every traveler is unique. We create bespoke itineraries tailored to your personal interests, whether you're seeking culture, luxury, spirituality, or adventure.",
             gradient: "from-purple-500 to-pink-500",
-            bgColor: "bg-gradient-to-br from-purple-100 to-pink-100"
+            // bgColor: "bg-gradient-to-br from-purple-100 to-pink-100",
+            backgroundImage: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
         },
         {
             title: "Wide Range of Destinations",
@@ -27,7 +24,8 @@ const WhatWeSpecializeIn = () => {
             ],
             gradient: "from-blue-500 to-cyan-500",
             bgColor: "bg-gradient-to-br from-blue-100 to-cyan-100",
-            fade: true // This card will have fade effect
+            fade: true,
+            backgroundImage: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80"
         },
         {
             title: "Specialized Tours",
@@ -38,25 +36,15 @@ const WhatWeSpecializeIn = () => {
                 "Spiritual & Cultural Experiences"
             ],
             gradient: "from-green-500 to-emerald-500",
-            bgColor: "bg-gradient-to-br from-green-100 to-emerald-100"
+            bgColor: "bg-gradient-to-br from-green-100 to-emerald-100",
+            backgroundImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
         },
         {
             title: "Trusted Partnerships",
             description: "We partner with India's finest hospitality brands like Taj Group, Sheraton Group, and Oberoi Group to ensure your comfort throughout your journey.",
             gradient: "from-orange-500 to-red-500",
-            bgColor: "bg-gradient-to-br from-orange-100 to-red-100"
-        },
-        {
-            title: "Seamless Service Network",
-            description: "With associated offices across India, Nepal, Bhutan, and Sri Lanka, we ensure end-to-end service coverage for a truly smooth travel experience.",
-            gradient: "from-indigo-500 to-purple-500",
-            bgColor: "bg-gradient-to-br from-indigo-100 to-purple-100"
-        },
-        {
-            title: "Multilingual, Experienced Team",
-            description: "Our skilled, multilingual team handles every detail, providing personalized care and ensuring your trip is both comfortable and enriching.",
-            gradient: "from-teal-500 to-blue-500",
-            bgColor: "bg-gradient-to-br from-teal-100 to-blue-100"
+            bgColor: "bg-gradient-to-br from-orange-100 to-red-100",
+            backgroundImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
         }
     ];
 
@@ -114,14 +102,6 @@ const WhatWeSpecializeIn = () => {
         <>
             {/* Wrapper to prevent horizontal overflow */}
             <div className="overflow-x-hidden">
-                {/* Header section - equivalent to .ht in original */}
-                <section className="h-40 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                    <div className="text-center text-white">
-                        <h1 className="heading-3 mb-2">Indo Moris Holidays</h1>
-                        <p className="body-md">Discover What Makes Us Special</p>
-                    </div>
-                </section>
-
                 {/* Horizontal scrolling container */}
                 <div
                     ref={containerRef}
@@ -133,28 +113,40 @@ const WhatWeSpecializeIn = () => {
                             key={index}
                             ref={addToRefs}
                             className={`
-                            w-screen h-full flex items-center justify-center p-8 flex-shrink-0
+                            w-screen h-full flex items-center justify-center p-8 flex-shrink-0 relative
                             ${spec.bgColor}
                             ${spec.fade ? 'fade-card' : ''}
                         `}
                         >
-                            <div className="max-w-4xl mx-auto">
-                                <div className="bg-white rounded-3xl p-12 shadow-2xl border border-gray-200 hover:shadow-3xl transition-all duration-500">
+                            {/* Background Image with reduced opacity */}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
+                                style={{
+                                    backgroundImage: `url(${spec.backgroundImage})`,
+                                    zIndex: 1
+                                }}
+                            ></div>
+
+                            {/* Overlay gradient for better text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent" style={{ zIndex: 2 }}></div>
+
+                            <div className="max-w-4xl mx-auto relative" style={{ zIndex: 10 }}>
+                                <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-gray-200 hover:shadow-3xl transition-all duration-500">
                                     {/* Gradient accent */}
                                     <div className={`w-16 h-2 bg-gradient-to-r ${spec.gradient} rounded-full mb-8`}></div>
 
-                                    <h3 className="subheading-1 text-gray-900 mb-4">
+                                    <h3 className="text-3xl font-bold text-gray-900 mb-4">
                                         {spec.title}
                                     </h3>
 
-                                    <p className="body-md text-gray-600 mb-6 leading-relaxed">
+                                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                                         {spec.description}
                                     </p>
 
                                     {spec.destinations && (
                                         <ul className="space-y-2">
                                             {spec.destinations.map((dest, idx) => (
-                                                <li key={idx} className="flex items-start gap-3 text-gray-700 body-sm">
+                                                <li key={idx} className="flex items-start gap-3 text-gray-700 text-base">
                                                     <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${spec.gradient} mt-2 flex-shrink-0`}></div>
                                                     <span>{dest}</span>
                                                 </li>
@@ -166,20 +158,6 @@ const WhatWeSpecializeIn = () => {
                         </div>
                     ))}
                 </div>
-
-                {/* Bottom section */}
-                <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-                    <div className="max-w-4xl mx-auto text-center px-8">
-                        <div className="bg-white rounded-3xl px-12 py-8 shadow-lg border border-gray-100">
-                            <h2 className="heading-4 text-gray-800 mb-2">
-                                Indo Moris Holidays
-                            </h2>
-                            <p className="body-md text-gray-600 italic">
-                                We don't just organize trips, we create unforgettable stories.
-                            </p>
-                        </div>
-                    </div>
-                </section>
             </div>
 
             {/* GSAP CDN Scripts - Add these to your app's head */}

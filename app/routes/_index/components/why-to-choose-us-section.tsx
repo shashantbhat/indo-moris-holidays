@@ -9,35 +9,38 @@ const ChooseUs = () => {
     const sectionRef = useRef(null);
     const cardsRef = useRef([]);
 
+    // Reset cardsRef array before repopulating
     useEffect(() => {
-        // Set initial state - cards are invisible and slightly moved down
+        cardsRef.current = [];
+    }, []);
+
+    useEffect(() => {
         gsap.set(cardsRef.current, {
             opacity: 0,
             y: 50,
         });
 
-        // Create the scroll-triggered animation
         gsap.to(cardsRef.current, {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            stagger: 0.4, // Each card animates 0.2s after the previous one
+            stagger: 0.4,
             ease: "power2.out",
             scrollTrigger: {
                 trigger: sectionRef.current,
-                start: "top 75%", // Animation starts when section is 80% visible
+                start: "top 75%",
                 end: "bottom 20%",
-                toggleActions: "play none none reverse", // Play on enter, reverse on leave
+                toggleActions: "play none none reverse",
+                markers: false, // set to true for debugging
             }
         });
 
-        // Cleanup function
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         };
     }, []);
 
-    // Helper function to add card refs
+    // Helper to attach each card ref
     const addToRefs = (el) => {
         if (el && !cardsRef.current.includes(el)) {
             cardsRef.current.push(el);
