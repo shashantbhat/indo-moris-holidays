@@ -5,16 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          "Inter",
-          "ui-sans-serif",
-          "system-ui",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Noto Color Emoji",
-        ],
+        heading: ['"League Spartan"', 'sans-serif'],
+        subheading: ['"Raleway"', 'sans-serif'],
+        body: ['"Montserrat"', 'sans-serif'],
       },
     },
   },

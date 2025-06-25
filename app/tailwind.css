@@ -1,12 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* html,
-body {
-  @apply bg-white dark:bg-gray-950;
+:root {
+    --font-heading: 'League Spartan', sans-serif;
+    --font-subheading: 'Raleway', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-} */
+/* Headings */
+
+.heading-1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 44px;
+}
+
+.heading-2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.heading-3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 28px;
+}
+
+.heading-4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.heading-5 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+/* Subheadings */
+
+.subheading-1 {
+    font-family: var(--font-subheading);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.subheading-2 {
+    font-family: var(--font-subheading);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.subheading-3 {
+    font-family: var(--font-subheading);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* Body Text */
+
+.body-lg {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.body-md {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.body-sm {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 14px;
+}
+
+/* Responsive Sizes */
+
+/* Tablet (min-width: 640px) */
+@media (min-width: 640px) {
+    .heading-1 { font-size: 52px; }
+    .heading-2 { font-size: 44px; }
+    .heading-3 { font-size: 36px; }
+    .heading-4 { font-size: 32px; }
+    .heading-5 { font-size: 24px; }
+
+    .subheading-1 { font-size: 32px; }
+    .subheading-2 { font-size: 24px; }
+    .subheading-3 { font-size: 20px; }
+
+    .body-lg { font-size: 24px; }
+    .body-md { font-size: 20px; }
+    .body-sm { font-size: 14px; }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .heading-1 { font-size: 64px; }
+    .heading-2 { font-size: 52px; }
+    .heading-3 { font-size: 44px; }
+    .heading-4 { font-size: 36px; }
+    .heading-5 { font-size: 28px; }
+
+    .subheading-1 { font-size: 40px; }
+    .subheading-2 { font-size: 32px; }
+    .subheading-3 { font-size: 24px; }
+
+    .body-lg { font-size: 28px; }
+    .body-md { font-size: 24px; }
+    .body-sm { font-size: 16px; }
+}

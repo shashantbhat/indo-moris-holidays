@@ -18,7 +18,9 @@
 		"@remix-run/cloudflare": "^2.16.6",
 		"@remix-run/react": "^2.16.6",
 		"@remix-run/server-runtime": "^2.16.6",
+		"gsap": "^3.13.0",
 		"isbot": "^4.1.0",
+		"lucide-react": "^0.522.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
@@ -46,11 +48,9 @@
 	"engines": {
 		"node": ">=20.0.0"
 	},
-	
 	"overrides": {
 		"@remix-run/dev": {
-		"wrangler": "$wrangler"
+			"wrangler": "$wrangler"
+		}
 	}
-	
-}
 }
