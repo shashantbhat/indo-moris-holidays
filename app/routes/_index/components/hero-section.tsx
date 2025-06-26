@@ -2,9 +2,10 @@ export default function Hero (){
     return(
         <div className="relative w-screen h-screen">
             <img
-                src="/assets/background_pic.jpg"
+                src="/assets/background_pic2.jpg"
                 className="w-full h-full object-cover z-0 rounded-xl"
                 alt="Group photograph"
+                draggable={false}
             />
         
             {/* Overlay for slight dark effect */}
