@@ -120,7 +120,7 @@ const WhatWeSpecializeIn = () => {
                         >
                             {/* Background Image with reduced opacity */}
                             <div
-                                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
+                                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
                                 style={{
                                     backgroundImage: `url(${spec.backgroundImage})`,
                                     zIndex: 1
