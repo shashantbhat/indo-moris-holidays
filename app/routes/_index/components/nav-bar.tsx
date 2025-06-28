@@ -8,7 +8,7 @@ export default function Navbar() {
         <div className="flex justify-between h-14 items-center">
           <div className="flex items-center">
             <img
-                src="/assets/indo_moris_logo.png"
+                src="/indo_moris_logo.png"
                 alt="Indo Moris Logo"
                 className="object-contain scale-[50%]"
             />

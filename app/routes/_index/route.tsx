@@ -6,6 +6,8 @@ import {MetaFunction} from "@remix-run/react";
 import Navbar from "./components/nav-bar";
 import TestimonialCards from "~/routes/_index/components/testimonials";
 import WhatWeSpecializeIn from "~/routes/_index/components/what-we-specialize-in";
+import OurExclusive from "~/routes/_index/components/our-exclusive";
+import Footer from "~/components/footer";
 
 // export const loader = async () => {
 //   return json({});
@@ -24,9 +26,10 @@ export default function LandingPage () {
           <div className="">
               <Navbar/>
               <Hero/>
-              <WhatWeSpecializeIn/>
               <ChooseUs/>
+              <OurExclusive/>
               <TestimonialCards/>
+              <Footer/>
           </div>
       </>
     )
