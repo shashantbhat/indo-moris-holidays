@@ -1,13 +1,13 @@
 export default function Hero (){
     return(
-        <div className="relative w-screen h-screen">
+        <section className="relative w-screen h-screen sm:min-h-svh rounded-b-3xl overflow-hidden">
             <img
-                src="/assets/background_pic2.jpg"
-                className="w-full h-full object-cover z-0 rounded-xl"
+                src="/assets/background_pic.jpg"
+                className="w-full h-full object-cover z-0"
                 alt="Group photograph"
                 draggable={false}
             />
-        
+
             {/* Overlay for slight dark effect */}
             {/* <div className="absolute inset-0 bg-black bg-opacity-40 z-10"/> */}
 
@@ -22,6 +22,6 @@ export default function Hero (){
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

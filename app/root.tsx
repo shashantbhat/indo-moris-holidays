@@ -16,29 +16,48 @@ export const links: LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
-  { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
+  { rel: "icon", href: "/indo_moris_logo.png", type: "image/png" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-    <head>
-      <meta charSet="utf-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <Meta/>
-      <link rel="icon" href="/assets/indo_moris_logo.png"/>
-      <Links/>
-    </head>
-    <body>
-    {children}
-    <ScrollRestoration/>
-    <Scripts />
+      <html lang="en">
+      <head>
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Indo Moris Holidays",
+            "url": "https://indomorisholidays.com",
+            "logo": "https://indomorisholidays.com/indo_moris_logo.png"
+          })
+        }} />
+
+        {/* SEO & Meta */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta property="og:image" content="https://indomorisholidays.com/indo_moris_logo.png" />
+        <meta name="twitter:image" content="https://indomorisholidays.com/indo_moris_logo.png" />
+
+        {/* Remix and additional tags */}
+        <Meta />
+        <Links />
+
+        {/* Page title (change or set dynamically) */}
+        <title>Indo Moris Holidays</title>
+      </head>
+      <body>
+      {children}
+      <ScrollRestoration />
+      <Scripts />
       </body>
-    </html>
+      </html>
   );
 }
 
