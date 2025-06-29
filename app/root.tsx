@@ -20,7 +20,7 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  { rel: "icon", href: "/indo_moris_logo.png", type: "image/png" },
+  { rel: "icon", href: "/indo_moris_logo-192x192.png", sizes: "192x192", type: "image/png" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -34,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             "@type": "Organization",
             "name": "Indo Moris Holidays",
             "url": "https://indomorisholidays.com",
-            "logo": "https://indomorisholidays.com/indo_moris_logo.png"
+            "logo": "https://indomorisholidays.com/indo_moris_logo-192x192.png"
           })
         }} />
 
@@ -42,8 +42,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-        <meta property="og:image" content="https://indomorisholidays.com/indo_moris_logo.png" />
-        <meta name="twitter:image" content="https://indomorisholidays.com/indo_moris_logo.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Indo Moris Holidays" />
+        <meta property="og:description" content="Discover the world with Indo Moris Holidays – Tailor-made tours and unforgettable experiences." />
+        <meta property="og:url" content="https://indomorisholidays.com" />
+        <meta property="og:image" content="https://indomorisholidays.com/indo_moris_logo-192x192.png" />
+        <meta name="twitter:image" content="https://indomorisholidays.com/indo_moris_logo-192x192.png" />
 
         {/* Remix and additional tags */}
         <Meta />
