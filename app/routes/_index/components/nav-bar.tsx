@@ -10,7 +10,7 @@ export default function Navbar() {
             <img
                 src="/indo_moris_logo.png"
                 alt="Indo Moris Logo"
-                className="object-contain scale-[50%]"
+                className="object-contain scale-[28%]"
             />
             <Link to="/" className="subheading-2">
               Indo Moris Holidays
