@@ -36,22 +36,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
             "url": "https://indomorisholidays.com",
             "logo": "https://indomorisholidays.com/indo_moris_logo.png"
           })
-        }} />
+        }}/>
 
         {/* SEO & Meta */}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Indo Moris Holidays" />
-        <meta property="og:description" content="Discover the world with Indo Moris Holidays – Tailor-made tours and unforgettable experiences." />
-        <meta property="og:url" content="https://indomorisholidays.com" />
-        <meta property="og:image" content="https://indomorisholidays.com/indo_moris_logo.png" />
-        <meta name="twitter:image" content="https://indomorisholidays.com/indo_moris_logo.png" />
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#ffffff"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Indo Moris Holidays"/>
+        <meta property="og:description" content="Discover the world with Indo Moris Holidays – Tailor-made tours and unforgettable experiences."/>
+        <meta property="og:url" content="https://indomorisholidays.com"/>
+        <meta property="og:image" content="https://indomorisholidays.com/indo_moris_logo.png"/>
+        <meta name="twitter:image" content="https://indomorisholidays.com/indo_moris_logo.png"/>
 
         {/* Remix and additional tags */}
-        <Meta />
-        <Links />
+        <Meta/>
+        <link rel="icon" href="/favicon.ico"/>
+        <Links/>
 
         {/* Page title (change or set dynamically) */}
         <title>Indo Moris Holidays</title>
