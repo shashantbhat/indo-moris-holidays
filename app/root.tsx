@@ -20,7 +20,7 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  { rel: "icon", href: "/indo_moris_logo.png", sizes: "192x192", type: "image/png" },
+  { rel: "icon", href: "/indo_moris_logo.png?v=2", sizes: "192x192", type: "image/png" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -51,7 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Remix and additional tags */}
         <Meta/>
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href="/favicon.ico?v=2"/>
         <Links/>
 
         {/* Page title (change or set dynamically) */}
