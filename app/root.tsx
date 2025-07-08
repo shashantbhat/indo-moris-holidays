@@ -6,17 +6,14 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/cloudflare";
-import Navbar from "./routes/_index/components/nav-bar";
 import "./tailwind.css";
-import type { LoaderFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import * as process from "node:process";
 
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
-
+  const MAINTENANCE_MODE = 'true';
   // Redirect to maintenance page unless it's already there
-  if (process.env.MAINTENANCE_MODE === "true" && url.pathname !== "/under-maintenance") {
+  if (MAINTENANCE_MODE === "true" && url.pathname !== "/under-maintenance") {
     throw redirect("/under-maintenance");
   }
 
