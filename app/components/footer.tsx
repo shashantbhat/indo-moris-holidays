@@ -1,14 +1,79 @@
-const Footer = () =>{
+const Footer = () => {
     return (
-        <section className="w-full max-h-[350px]">
-            <div className="flex px-12">
-                <span className="body-md">Indo Moris Holidays</span>
-                <div className="grid grid-cols-2">
-
+        <footer className="w-full pb-6 mt-16">
+            <div className="max-w-7xl mx-auto px-6 sm:px-12 body-sm">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-10">
+                    {/* Brand & Social */}
+                    <div>
+                        <h2 className="subheading-3 text-black mb-2">Indo Moris Holidays</h2>
+                        <p className="mb-3 text-gray-600 ">
+                            Explore the world's wonders with us—your trusted travel partner for dream vacations, unique experiences, and reliable support.
+                        </p>
+                        <div className="flex gap-x-3">
+                            <a href="https://www.instagram.com/indomoris/" target="_blank" rel="noopener">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"
+                                    alt="Instagram"
+                                    className="object-contain size-6"
+                                />
+                            </a>
+                            <a href="https://www.facebook.com/p/Indo-Moris-Holidays-100066821523903/" target="_blank" rel="noopener">
+                                <img
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+                                    alt="Facebook"
+                                    className="object-contain size-6"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="font-semibold text-gray-900 mb-3">Quick Links</h3>
+                        <ul className="space-y-2">
+                            <li><a href="/about" className="text-gray-600 hover:text-blue-700">About Us</a></li>
+                            <li><a href="/tours" className="text-gray-600 hover:text-blue-700">Tours</a></li>
+                            <li><a href="/destinations" className="text-gray-600 hover:text-blue-700">Destinations</a></li>
+                            <li><a href="/contact" className="text-gray-600 hover:text-blue-700">Contact</a></li>
+                            <li><a href="/faq" className="text-gray-600 hover:text-blue-700">FAQ</a></li>
+                        </ul>
+                    </div>
+                    {/* Contact */}
+                    <div>
+                        <h3 className="font-semibold text-gray-900 mb-3">Contact Us</h3>
+                        <ul className="space-y-1 text-gray-700">
+                            <li>Email: <a href="mailto:indomorisholidays@gmail.com" className="text-blue-700 hover:underline">indomorisholidays@gmail.com</a></li>
+                            <li>Phone: <a href="tel:+91-9180519001" className="text-blue-700 hover:underline">+91-9810519001</a></li>
+                            <li>Location: New Delhi, India</li>
+                        </ul>
+                    </div>
+                    {/* Newsletter */}
+                    {/*<div>*/}
+                    {/*    <h3 className="font-semibold text-gray-900 mb-3">Newsletter</h3>*/}
+                    {/*    <form className="flex flex-col gap-2">*/}
+                    {/*        <input*/}
+                    {/*            type="email"*/}
+                    {/*            placeholder="Your email"*/}
+                    {/*            className="border rounded px-2 py-1 text-sm"*/}
+                    {/*        />*/}
+                    {/*        <button*/}
+                    {/*            type="submit"*/}
+                    {/*            className="bg-blue-700 text-white rounded px-3 py-1 mt-1 hover:bg-blue-800 transition"*/}
+                    {/*        >*/}
+                    {/*            Subscribe*/}
+                    {/*        </button>*/}
+                    {/*    </form>*/}
+                    {/*</div>*/}
+                </div>
+                <hr className="my-8 border-gray-300"/>
+                <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                    <span>&copy; {new Date().getFullYear()} Indo Moris Holidays. All rights reserved.</span>
+                    <span>
+                        Made with ❤️ by Indo Moris Team
+                    </span>
                 </div>
             </div>
-        </section>
-    )
-}
+        </footer>
+    );
+};
 
 export default Footer;

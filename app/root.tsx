@@ -13,7 +13,7 @@ export const loader = async ({ request }) => {
   const url = new URL(request.url);
   const MAINTENANCE_MODE = 'true';
   // Redirect to maintenance page unless it's already there
-  if (MAINTENANCE_MODE === "true" && url.pathname !== "/under-maintenance") {
+  if (MAINTENANCE_MODE === "false" && url.pathname !== "/under-maintenance") {
     throw redirect("/under-maintenance");
   }
 
