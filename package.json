@@ -15,20 +15,28 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
+		"@electric-sql/pglite": "^0.3.5",
+		"@neondatabase/serverless": "^1.0.1",
 		"@remix-run/cloudflare": "^2.16.6",
 		"@remix-run/react": "^2.16.6",
 		"@remix-run/server-runtime": "^2.16.6",
+		"drizzle-kit": "^0.31.4",
+		"drizzle-orm": "^0.44.3",
 		"gsap": "^3.13.0",
 		"isbot": "^4.1.0",
 		"lucide-react": "^0.522.0",
+		"pg": "^8.16.3",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"ws": "^8.18.3"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20250613.0",
 		"@remix-run/dev": "^2.16.6",
+		"@types/better-sqlite3": "^7.6.13",
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
+		"@types/ws": "^8.18.1",
 		"@typescript-eslint/eslint-plugin": "^6.7.4",
 		"@typescript-eslint/parser": "^6.7.4",
 		"autoprefixer": "^10.4.19",

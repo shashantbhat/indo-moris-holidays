@@ -40,7 +40,7 @@ export default function Navbar() {
             >
               <MailStroke/>
             </a>
-            <Link to="/login" className="px-3 py-1 bg-black text-white rounded-xl transition hover:bg-gradient-to-r hover:from-blue-300 hover:to-blue-400">
+            <Link to="/user-info" className="px-3 py-1 bg-black text-white rounded-xl transition hover:bg-gradient-to-r hover:from-blue-300 hover:to-blue-400">
               Login
             </Link>
           </div>
