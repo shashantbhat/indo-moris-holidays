@@ -9,16 +9,16 @@ import type { LinksFunction } from "@remix-run/cloudflare";
 import "./tailwind.css";
 import { redirect } from "@remix-run/node";
 
-export const loader = async ({ request }) => {
-  const url = new URL(request.url);
-  // const MAINTENANCE_MODE = 'true';
-  // // Redirect to maintenance page unless it's already there
-  // if (MAINTENANCE_MODE === "false" && url.pathname !== "/under-maintenance") {
-  //   throw redirect("/under-maintenance");
-  // }
-  //
-  // return null;
-};
+// export const loader = async ({ request }) => {
+//   const url = new URL(request.url);
+//   // const MAINTENANCE_MODE = 'true';
+//   // // Redirect to maintenance page unless it's already there
+//   // if (MAINTENANCE_MODE === "false" && url.pathname !== "/under-maintenance") {
+//   //   throw redirect("/under-maintenance");
+//   // }
+//   //
+//   // return null;
+// };
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
