@@ -30,11 +30,17 @@ const Footer = () => {
                     <div>
                         <h3 className="font-semibold text-gray-900 mb-3">Quick Links</h3>
                         <ul className="space-y-2">
-                            <li><a href="/about" className="text-gray-600 hover:text-blue-700">About Us</a></li>
-                            <li><a href="/tours" className="text-gray-600 hover:text-blue-700">Tours</a></li>
-                            <li><a href="/destinations" className="text-gray-600 hover:text-blue-700">Destinations</a></li>
-                            <li><a href="/contact" className="text-gray-600 hover:text-blue-700">Contact</a></li>
-                            <li><a href="/faq" className="text-gray-600 hover:text-blue-700">FAQ</a></li>
+                            <li><a href="/about" className="text-gray-400 hover:text-blue-700 cursor-not-allowed pointer-events-none">About Us</a></li>
+                            <li><a href="/destinations" className="text-gray-400 hover:text-blue-700 cursor-not-allowed pointer-events-none">Destinations</a></li>
+                            <li>
+                                <a
+                                    href="mailto:indomorisholidays@gmail.com"
+                                    className="text-gray-600 hover:text-blue-700"
+                                >
+                                    Contact
+                                </a>
+                            </li>
+                            <li><a href="/faq" className="text-gray-400 hover:text-blue-700 cursor-not-allowed pointer-events-none">FAQ</a></li>
                         </ul>
                     </div>
                     {/* Contact */}
@@ -43,7 +49,7 @@ const Footer = () => {
                         <ul className="space-y-1 text-gray-700">
                             <li>Email: <a href="mailto:indomorisholidays@gmail.com" className="text-blue-700 hover:underline">indomorisholidays@gmail.com</a></li>
                             <li>Phone: <a href="tel:+91-9180519001" className="text-blue-700 hover:underline">+91-9810519001</a></li>
-                            <li>Location: New Delhi, India</li>
+                            <li>Location: D-260, Lane No - 11, 2nd Floor, Laxmi Nagar, New Delhi-110092, India</li>
                         </ul>
                     </div>
                     {/* Newsletter */}
