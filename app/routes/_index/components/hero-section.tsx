@@ -12,12 +12,12 @@ export default function Hero (){
              {/*<div className="absolute inset-0 bg-black bg-opacity-40 z-10"/>*/}
 
             {/* Hero Content */}
-            <div className="absolute top-[10%] w-full flex items-center justify-center z-20 px-4 mt-10 text-white">
+            <div className="absolute -top-[15%] sm:top-[10%] h-full sm:h-auto w-full flex items-center justify-center z-20 px-4 sm:mt-10 text-white">
                 <div className="text-center">
-                    <h1 className="font-medium text-3xl">
+                    <h1 className="font-medium text-2xl sm:text-3xl">
                         Explore like never before
                     </h1>
-                    <p className="font-extrabold text-5xl mt-8">
+                    <p className="font-extrabold text-4xl sm:text-5xl mt-8">
                         Personalized trips,<br/> effortless travel
                     </p>
                     <button

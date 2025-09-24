@@ -1,6 +1,6 @@
 import Hero from "./components/hero-section";
 import ChooseUs from "~/routes/_index/components/why-to-choose-us-section";
-import {MetaFunction} from "@remix-run/react";
+import {MetaFunction, useActionData} from "@remix-run/react";
 import Navbar from "./components/nav-bar";
 import TestimonialCards from "~/routes/_index/components/testimonials";
 import OurExclusive from "~/routes/_index/components/our-exclusive";
@@ -49,6 +49,7 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function LandingPage () {
+    const actionData = useActionData<typeof action>();
     return(
       <>
           <div className="">
@@ -56,7 +57,7 @@ export default function LandingPage () {
               <NewNavBar/>
               <Hero/>
               {/*<ChooseUs/>*/}
-              <TravelBookingForm/>
+              <TravelBookingForm actionData={actionData}/>
               <TestimonialCards/>
               {/*<OurExclusive/>*/}
 

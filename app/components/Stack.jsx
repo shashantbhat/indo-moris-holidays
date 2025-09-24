@@ -106,7 +106,7 @@ export default function Stack({
                     return (
                         <CardRotate key={card.id} onSendToBack={() => sendToBack(card.id)} sensitivity={sensitivity}>
                             <motion.div
-                                className="card"
+                                className="card w-[320px] sm:w-[380px] h-[500px] sm:h-[520px]"
                                 onClick={() => sendToBackOnClick && sendToBack(card.id)}
                                 animate={{
                                     rotateZ: (cards.length - index - 1) * 4 + randomRotate,
@@ -120,8 +120,8 @@ export default function Stack({
                                     damping: animationConfig.damping
                                 }}
                                 style={{
-                                    width: 380,
-                                    height: 520,
+                                    // width: 380,
+                                    // height: 520,
                                     display: 'flex',
                                     flexDirection: 'column',
                                     background: '#fff',
@@ -134,7 +134,7 @@ export default function Stack({
                                 <img
                                     src={card.img}
                                     alt={`card-${card.id}`}
-                                    className="card-image"
+                                    className="card-image h-[50%] sm:h-[60%] w-[90%] sm:w-[100%]"
                                     style={{
                                         width: '100%',
                                         height: '60%',

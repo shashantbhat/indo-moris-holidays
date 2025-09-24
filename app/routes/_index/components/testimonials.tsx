@@ -4,13 +4,13 @@ import Stack from "~/components/Stack";
 const TestimonialCards = () => {
 
     return (
-        <section className="flex flex-col items-center w-full py-20 bg-gray-50">
+        <section className="flex flex-col items-center w-full py-20 bg-gray-50 overflow-x-hidden">
             {/* Section Heading */}
-            <div className="text-3xl font-extrabold text-center">
+            <div className="text-2xl sm:text-3xl font-extrabold text-center">
                 Real Experiences, <br/>Real Smiles
             </div>
 
-            <div className="text-2xl font-medium mt-10 mb-8 text-center">
+            <div className="text-lg sm:text-2xl font-medium mt-10 mb-8 text-center">
                 Hear it from our guest
             </div>
 
