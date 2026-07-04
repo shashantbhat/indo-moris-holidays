@@ -44,7 +44,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             "@type": "Organization",
             "name": "Indo Moris Holidays",
             "url": "https://indomorisholidays.com",
-            "logo": "https://indomorisholidays.com/indo_moris_logo.png"
+            "logo": "https://indomorisholidays.com/assets/indo_moris_logo.png"
           })
         }}/>
 
@@ -56,16 +56,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta property="og:title" content="Indo Moris Holidays"/>
         <meta property="og:description" content="Discover the world with Indo Moris Holidays – Tailor-made tours and unforgettable experiences."/>
         <meta property="og:url" content="https://indomorisholidays.com"/>
-        <meta property="og:image" content="https://indomorisholidays.com/indo_moris_logo.png"/>
-        <meta name="twitter:image" content="https://indomorisholidays.com/indo_moris_logo.png"/>
+        <meta property="og:image" content="https://indomorisholidays.com/assets/indo_moris_logo.png"/>
+        <meta name="twitter:image" content="https://indomorisholidays.com/assets/indo_moris_logo.png"/>
 
         {/* Direct Favicon Link Tags - Using indo_moris_logo.png */}
-        <link rel="icon" href="/indo_moris_logo.png" type="image/png" sizes="16x16"/>
-        <link rel="icon" href="/indo_moris_logo.png" type="image/png" sizes="32x32"/>
-        <link rel="icon" href="/indo_moris_logo.png" type="image/png" sizes="96x96"/>
-        <link rel="icon" href="/indo_moris_logo.png" type="image/png" sizes="192x192"/>
+        <link rel="icon" href="assets/indo_moris_logo.png" type="image/png" sizes="32x32"/>
+        <link rel="icon" href="assets/indo_moris_logo.png" type="image/png" sizes="16x16"/>
+        <link rel="icon" href="assets/indo_moris_logo.png" type="image/png" sizes="96x96"/>
+        <link rel="icon" href="assets/indo_moris_logo.png" type="image/png" sizes="192x192"/>
         <link rel="apple-touch-icon" href="/apple_indo_moris_logo.png" sizes="180x180"/>
-        <link rel="shortcut icon" href="/indo_moris_logo.png" type="image/png"/>
+        <link rel="shortcut icon" href="assets/indo_moris_logo.png" type="image/png"/>
 
         {/* Remix and additional tags */}
         <Meta/>
