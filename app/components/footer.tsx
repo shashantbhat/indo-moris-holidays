@@ -1,3 +1,5 @@
+const CDN = import.meta.env.VITE_CDN_URL;
+
 const Footer = () => {
     return (
         <footer className="w-full pb-6 mt-16">
@@ -12,14 +14,14 @@ const Footer = () => {
                         <div className="flex gap-x-3">
                             <a href="https://www.instagram.com/indomoris/" target="_blank" rel="noopener">
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"
+                                    src={`${CDN}/instagram-logo.webp`}
                                     alt="Instagram"
                                     className="object-contain size-6"
                                 />
                             </a>
                             <a href="https://www.facebook.com/p/Indo-Moris-Holidays-100066821523903/" target="_blank" rel="noopener">
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+                                    src={`${CDN}/facebook-logo.webp`}
                                     alt="Facebook"
                                     className="object-contain size-6"
                                 />

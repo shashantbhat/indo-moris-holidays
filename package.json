@@ -12,7 +12,8 @@
 		"typecheck": "tsc",
 		"typegen": "wrangler types",
 		"preview": "npm run build && wrangler dev",
-		"cf-typegen": "wrangler types"
+		"cf-typegen": "wrangler types",
+		"upload-assets": "aws s3 sync ./assets s3://indo-moris-holidays-assets/assets"
 	},
 	"dependencies": {
 		"@electric-sql/pglite": "^0.3.5",

@@ -1,8 +1,10 @@
+const CDN = import.meta.env.VITE_CDN_URL;
+
 export default function Hero (){
     return(
         <section className="relative w-screen h-screen sm:min-h-svh rounded-b-3xl overflow-hidden">
             <img
-                src="/assets/hero-image.jpg"
+                src={`${CDN}/hero-image.jpg`}
                 className="w-full h-full object-cover z-0"
                 alt="Group photograph"
                 draggable={false}

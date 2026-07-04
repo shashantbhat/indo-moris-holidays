@@ -3,6 +3,8 @@ import { useState } from 'react';
 import {ArrowDown} from 'lucide-react';
 import './Stack.css';
 
+const CDN = import.meta.env.VITE_CDN_URL;
+
 function CardRotate({ children, onSendToBack, sensitivity }) {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -47,21 +49,21 @@ export default function Stack({
             : [
                 {
                     id: 1,
-                    img: 'assets/testimonial_1.jpg',
+                    img: `${CDN}/testimonial_1.jpg`,
                     name: 'Krishna',
                     comment:
                         '“This was the best trip my family and I ever had! Mr. Sandeep and Indo Moris made everything seamless—from airport pickup to hotel stay at Taj Princess, shopping trips, and dinners. Highly professional, helpful, and memorable!”'
                 },
                 {
                     id: 2,
-                    img: 'assets/testimonial_2.jpg',
+                    img: `${CDN}/testimonial_2.jpg`,
                     name: 'Archna Matabadal',
                     comment:
                         '“Had a superb, well-organized holiday with great hotels. Wonderful family time—looking forward to visiting Kerala and more. Thank you, Sandeep Sir & Indo Moris!”'
                 },
                 {
                     id: 3,
-                    img: 'assets/testimonial_3.jpg',
+                    img: `${CDN}/testimonial_3.jpg`,
                     name: 'Elena Zenovic',
                     comment:
                         '“Had an amazing trip for 19 people across Agra, Jaipur, Varanasi, Rishikesh, Haridwar, and Delhi. Comfortable travel, great hotels, smooth sightseeing with expert guides, and well-organized excursions. Plenty of time for shopping, activities, and cultural experiences like Holi and Ganga Aarti. Truly the best trip of my life—thank you, Indo Moris!”'
@@ -101,7 +103,7 @@ export default function Stack({
                 }}
             >
                 {cards.map((card, index) => {
-                    const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
+                    const randomRotate = randomRotation ? index * 2 : 0;
 
                     return (
                         <CardRotate key={card.id} onSendToBack={() => sendToBack(card.id)} sensitivity={sensitivity}>
@@ -109,7 +111,7 @@ export default function Stack({
                                 className="card w-[320px] sm:w-[380px] h-[500px] sm:h-[520px]"
                                 onClick={() => sendToBackOnClick && sendToBack(card.id)}
                                 animate={{
-                                    rotateZ: (cards.length - index - 1) * 4 + randomRotate,
+                                    rotateZ: (cards.length - index - 1) * 6 - randomRotate,
                                     scale: 1 + index * 0.06 - cards.length * 0.06,
                                     transformOrigin: '90% 90%'
                                 }}

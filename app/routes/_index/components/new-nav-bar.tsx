@@ -1,6 +1,6 @@
 import GlassSurface from "~/components/GlassSurface";
 import { useEffect, useState } from "react";
-
+const CDN =  import.meta.env.VITE_CDN_URL;
 const NewNavBar = () => {
     const [isSupported, setIsSupported] = useState(false);
 
@@ -39,7 +39,7 @@ const NewNavBar = () => {
                             Indo Moris Holidays
                         </div>
                         <img
-                            src="/indo_moris_logo.png"
+                            src={`${CDN}/indo_moris_logo.png`}
                             alt="Indo Moris Logo"
                             className="h-6 w-6 !ml-0 block sm:hidden"
                         />
