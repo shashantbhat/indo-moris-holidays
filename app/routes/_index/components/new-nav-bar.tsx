@@ -1,5 +1,7 @@
 import GlassSurface from "~/components/GlassSurface";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 const CDN =  import.meta.env.VITE_CDN_URL;
 const NewNavBar = () => {
     const [isSupported, setIsSupported] = useState(false);
@@ -47,7 +49,7 @@ const NewNavBar = () => {
                         <div className="mx-4 border-l border-gray-300 h-6"></div>
 
                         <div className="flex space-x-2 sm:space-x-6 text-xs sm:text-base font-normal">
-                            <span className="cursor-pointer">About</span>
+                            <Link to="about" className="cursor-pointer">About</Link>
                             <span className="cursor-pointer">Itinerary</span>
                             <span className="cursor-pointer">Contact Us</span>
                         </div>

@@ -11,7 +11,6 @@ import {ActionFunctionArgs, json} from "@remix-run/node";
 import type {TravelBookingFormData} from "~/models/db/schema";
 import {travelBookingService} from "~/.server/travel_booking";
 
-
 // export const loader = async () => {
 //   return json({});
 // };
