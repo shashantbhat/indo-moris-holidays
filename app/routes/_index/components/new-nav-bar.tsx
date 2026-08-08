@@ -50,8 +50,13 @@ const NewNavBar = () => {
 
                         <div className="flex space-x-2 sm:space-x-6 text-xs sm:text-base font-normal">
                             <Link to="about" className="cursor-pointer">About</Link>
-                            <span className="cursor-pointer">Itinerary</span>
-                            <span className="cursor-pointer">Contact Us</span>
+                            <Link to="itinerary" className="cursor-pointer">Itinerary</Link>
+                            <a
+                                href="mailto:indomorisholidays@gmail.com?subject=Contact%20Us"
+                                className="cursor-pointer"
+                            >
+                                Contact Us
+                            </a>
                         </div>
                     </div>
 

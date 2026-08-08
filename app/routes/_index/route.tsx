@@ -10,6 +10,7 @@ import TravelBookingForm from "~/routes/booking-form/route";
 import {ActionFunctionArgs, json} from "@remix-run/node";
 import type {TravelBookingFormData} from "~/models/db/schema";
 import {travelBookingService} from "~/.server/travel_booking";
+import { sendBookingNotification } from "~/.server/email.server";
 
 // export const loader = async () => {
 //   return json({});
@@ -40,6 +41,23 @@ export async function action({ request }: ActionFunctionArgs) {
         };
 
         const savedBooking = await travelBookingService.createBooking(data);
+        
+
+        try {
+
+            await sendBookingNotification(data);
+
+        } catch (emailError) {
+
+            console.error(
+
+                "Booking saved, but notification email failed:",
+
+                emailError
+
+            );
+
+        }
         return json({ success: true, booking: savedBooking }, { status: 201 });
     } catch (error: any) {
         console.error("Error creating booking:", error);

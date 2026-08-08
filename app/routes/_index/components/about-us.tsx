@@ -13,6 +13,7 @@
  */
 
 import type { MetaFunction } from "@remix-run/node";
+import StatsStrip from './stats-strip';
 const CDN = import.meta.env.VITE_CDN_URL;
 export const meta: MetaFunction = () => {
   return [
@@ -123,34 +124,10 @@ export default function AboutUs() {
       </section>
 
       {/* ---------- Stats strip ---------- */}
-      <section className="bg-neutral-900 py-12 px-6">
-        <div className="mx-auto max-w-5xl grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
-          <div>
-            <p className="font-serif text-3xl text-white">2008</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.1em] text-neutral-400">
-              Year Founded
-            </p>
-          </div>
-          <div>
-            <p className="font-serif text-3xl text-white">17+</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.1em] text-neutral-400">
-              Years of Service
-            </p>
-          </div>
-          <div>
-            <p className="font-serif text-3xl text-white">1000s</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.1em] text-neutral-400">
-              Happy Travellers
-            </p>
-          </div>
-          <div>
-            <p className="font-serif text-3xl text-white">5.0★</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.1em] text-neutral-400">
-              Guest Rating
-            </p>
-          </div>
-        </div>
+      <section className="bg-neutral-900">
+        <StatsStrip/>
       </section>
+      
 
       {/* ---------- Values ---------- */}
       <section className="px-6 py-20">
