@@ -8,6 +8,8 @@ import {
 import type { LinksFunction } from "@remix-run/cloudflare";
 import "./tailwind.css";
 import { redirect } from "@remix-run/node";
+import NewNavBar from "./routes/_index/components/new-nav-bar";
+import Footer from "./components/footer";
 
 // export const loader = async ({ request }) => {
 //   const url = new URL(request.url);
@@ -85,5 +87,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 
 export default function App() {
-  return <Outlet />;
+  return(
+    <div>
+      <NewNavBar/>
+      <Outlet />
+      <Footer/>
+    </div>
+  ) 
 }
