@@ -1,16 +1,14 @@
-import { drizzle } from 'drizzle-orm/neon-http';
-import { eq, desc, and, like, gte, lte } from 'drizzle-orm';
+import { eq, desc, and, like, gte, lte } from "drizzle-orm";
 import {
     travelBookings,
     type NewTravelBooking,
     type TravelBooking,
-    type TravelBookingFormData
-} from '~/models/db/schema';
-
-// Initialize your database connection
-export const db = drizzle(process.env.DATABASE_URL!);
+    type TravelBookingFormData,
+} from "~/models/db/schema";
+import { getDb } from "../db.server";
 
 export class TravelBookingService {
+    constructor(private readonly db: ReturnType<typeof getDb>) {}
 
     /**
      * Create a new booking from form data
@@ -28,7 +26,10 @@ export class TravelBookingService {
             originCity: formData.originCity.trim(),
             destinationCity: formData.destinationCity.trim(),
             departureDate: formData.departureDate,
-            returnDate: formData.tripType === 'round_trip' ? formData.returnDate : null,
+            returnDate:
+                formData.tripType === "round_trip"
+                    ? formData.returnDate
+                    : null,
             adultsCount: formData.adultsCount,
             kidsCount: formData.kidsCount,
             totalPassengers,
@@ -37,10 +38,13 @@ export class TravelBookingService {
             userEmail: userInfo?.email || null,
             userName: userInfo?.name || null,
             userPhone: userInfo?.phone || null,
-            status: 'pending'
+            status: "pending",
         };
 
-        const [newBooking] = await db.insert(travelBookings).values(bookingData).returning();
+        const [newBooking] = await this.db
+            .insert(travelBookings)
+            .values(bookingData)
+            .returning();
         return newBooking;
     }
 
@@ -48,7 +52,7 @@ export class TravelBookingService {
      * Get booking by ID
      */
     async getBookingById(bookingId: string): Promise<TravelBooking | null> {
-        const [booking] = await db
+        const [booking] = await this.db
             .select()
             .from(travelBookings)
             .where(eq(travelBookings.id, bookingId));
@@ -60,7 +64,7 @@ export class TravelBookingService {
      * Get all bookings (with pagination)
      */
     async getAllBookings(limit = 50, offset = 0): Promise<TravelBooking[]> {
-        const bookings = await db
+        const bookings = await this.db
             .select()
             .from(travelBookings)
             .orderBy(desc(travelBookings.createdAt))
@@ -74,7 +78,7 @@ export class TravelBookingService {
      * Get bookings by user email
      */
     async getBookingsByUserEmail(email: string): Promise<TravelBooking[]> {
-        const bookings = await db
+        const bookings = await this.db
             .select()
             .from(travelBookings)
             .where(eq(travelBookings.userEmail, email))
@@ -88,13 +92,13 @@ export class TravelBookingService {
      */
     async updateBookingStatus(
         bookingId: string,
-        status: 'pending' | 'confirmed' | 'cancelled' | 'completed'
+        status: "pending" | "confirmed" | "cancelled" | "completed"
     ): Promise<TravelBooking | null> {
-        const [updatedBooking] = await db
+        const [updatedBooking] = await this.db
             .update(travelBookings)
             .set({
                 status,
-                updatedAt: new Date()
+                updatedAt: new Date(),
             })
             .where(eq(travelBookings.id, bookingId))
             .returning();
@@ -109,11 +113,11 @@ export class TravelBookingService {
         bookingId: string,
         updates: Partial<NewTravelBooking>
     ): Promise<TravelBooking | null> {
-        const [updatedBooking] = await db
+        const [updatedBooking] = await this.db
             .update(travelBookings)
             .set({
                 ...updates,
-                updatedAt: new Date()
+                updatedAt: new Date(),
             })
             .where(eq(travelBookings.id, bookingId))
             .returning();
@@ -125,7 +129,7 @@ export class TravelBookingService {
      * Delete a booking
      */
     async deleteBooking(bookingId: string): Promise<TravelBooking | null> {
-        const [deletedBooking] = await db
+        const [deletedBooking] = await this.db
             .delete(travelBookings)
             .where(eq(travelBookings.id, bookingId))
             .returning();
@@ -140,7 +144,7 @@ export class TravelBookingService {
         origin: string,
         destination: string
     ): Promise<TravelBooking[]> {
-        const bookings = await db
+        const bookings = await this.db
             .select()
             .from(travelBookings)
             .where(
@@ -161,7 +165,7 @@ export class TravelBookingService {
         startDate: string,
         endDate: string
     ): Promise<TravelBooking[]> {
-        const bookings = await db
+        const bookings = await this.db
             .select()
             .from(travelBookings)
             .where(
@@ -179,9 +183,9 @@ export class TravelBookingService {
      * Get bookings by status
      */
     async getBookingsByStatus(
-        status: 'pending' | 'confirmed' | 'cancelled' | 'completed'
+        status: "pending" | "confirmed" | "cancelled" | "completed"
     ): Promise<TravelBooking[]> {
-        const bookings = await db
+        const bookings = await this.db
             .select()
             .from(travelBookings)
             .where(eq(travelBookings.status, status))
@@ -194,7 +198,7 @@ export class TravelBookingService {
      * Get booking statistics
      */
     async getBookingStats() {
-        const allBookings = await db.select().from(travelBookings);
+        const allBookings = await this.db.select().from(travelBookings);
 
         const stats = {
             total: allBookings.length,
@@ -206,8 +210,12 @@ export class TravelBookingService {
                 acc[booking.tripType] = (acc[booking.tripType] || 0) + 1;
                 return acc;
             }, {} as Record<string, number>),
-            totalPassengers: allBookings.reduce((sum, booking) => sum + booking.totalPassengers, 0),
-            needsCabCount: allBookings.filter(booking => booking.needsCab).length,
+            totalPassengers: allBookings.reduce(
+                (sum, booking) => sum + booking.totalPassengers,
+                0
+            ),
+            needsCabCount: allBookings.filter((booking) => booking.needsCab)
+                .length,
         };
 
         return stats;
@@ -225,7 +233,7 @@ export class TravelBookingService {
         dateTo?: string;
         tripType?: string;
     }): Promise<TravelBooking[]> {
-        let query = db.select().from(travelBookings);
+        let query = this.db.select().from(travelBookings);
         const conditions = [];
 
         if (filters.origin) {
@@ -233,7 +241,9 @@ export class TravelBookingService {
         }
 
         if (filters.destination) {
-            conditions.push(like(travelBookings.destinationCity, `%${filters.destination}%`));
+            conditions.push(
+                like(travelBookings.destinationCity, `%${filters.destination}%`)
+            );
         }
 
         if (filters.status) {
@@ -265,5 +275,10 @@ export class TravelBookingService {
     }
 }
 
-// Export a singleton instance
-export const travelBookingService = new TravelBookingService();
+export function getTravelBookingService(
+    env: { DATABASE_URL: string }
+) {
+    const db = getDb(env);
+
+    return new TravelBookingService(db);
+}

@@ -1,14 +1,20 @@
 import { Resend } from "resend";
 import type { TravelBookingFormData } from "~/models/db/schema";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+type EmailEnv = {
+    RESEND_API_KEY: string;
+    BOOKING_NOTIFICATION_EMAIL: string;
+};
 
 export async function sendBookingNotification(
+    env: EmailEnv,
     booking: TravelBookingFormData
 ) {
+    const resend = new Resend(env.RESEND_API_KEY);
+
     const { data, error } = await resend.emails.send({
         from: "Booking Notifications <onboarding@resend.dev>",
-        to: [process.env.BOOKING_NOTIFICATION_EMAIL!],
+        to: [env.BOOKING_NOTIFICATION_EMAIL],
         subject: `New Travel Booking: ${booking.originCity} → ${booking.destinationCity}`,
         html: `
             <h2>New Travel Booking</h2>
@@ -27,9 +33,7 @@ export async function sendBookingNotification(
                 <strong>Departure Date:</strong> ${booking.departureDate}
             </p>
             <p>
-                <strong>Return Date:</strong> ${
-                    booking.returnDate || "N/A"
-                }
+                <strong>Return Date:</strong> ${booking.returnDate || "N/A"}
             </p>
 
             <h3>Passengers</h3>
@@ -42,14 +46,10 @@ export async function sendBookingNotification(
 
             <h3>Preferences</h3>
             <p>
-                <strong>Travel Modes:</strong> ${
-                    booking.travelModes.join(", ")
-                }
+                <strong>Travel Modes:</strong> ${booking.travelModes.join(", ")}
             </p>
             <p>
-                <strong>Cab Required:</strong> ${
-                    booking.needsCab ? "Yes" : "No"
-                }
+                <strong>Cab Required:</strong> ${booking.needsCab ? "Yes" : "No"}
             </p>
             <p>
                 <strong>Class:</strong> ${booking.classType}
