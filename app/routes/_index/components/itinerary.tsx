@@ -230,7 +230,7 @@ export default function Itineraries() {
       </section>
 
       {/* ---------- Featured day-by-day ---------- */}
-      <section className="bg-neutral-900 px-6 py-20 text-white">
+      <section className="bg-neutral-900 px-6 py-20 text-white" data-nav-theme="dark">
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-lg text-center">
             <span className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
@@ -340,7 +340,7 @@ export default function Itineraries() {
       </section>
 
       {/* ---------- CTA ---------- */}
-      <section className="bg-neutral-900 px-6 py-16 text-center">
+      <section className="bg-neutral-900 px-6 py-16 text-center" data-nav-theme="dark">
         <div className="mx-auto max-w-lg">
           <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-white">
             Don't see the trip you're picturing?

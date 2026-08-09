@@ -124,7 +124,7 @@ export default function AboutUs() {
       </section>
 
       {/* ---------- Stats strip ---------- */}
-      <section className="bg-neutral-900">
+      <section className="bg-neutral-900" data-nav-theme="dark">
         <StatsStrip/>
       </section>
       
@@ -189,7 +189,7 @@ export default function AboutUs() {
       </section>
 
       {/* ---------- CTA ---------- */}
-      <section className="bg-neutral-900 px-6 py-16 text-center">
+      <section className="bg-neutral-900 px-6 py-16 text-center" data-nav-theme="dark">
         <div className="mx-auto max-w-lg">
           <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-white">
             Plan your own Indo Moris story

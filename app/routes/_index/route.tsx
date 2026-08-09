@@ -74,14 +74,14 @@ export default function LandingPage () {
       <>
           <div className="">
               {/*<Navbar/>*/}
-              <NewNavBar/>
+              {/* <NewNavBar/> */}
               <Hero/>
               {/*<ChooseUs/>*/}
               <TravelBookingForm actionData={actionData}/>
               <TestimonialCards/>
               {/*<OurExclusive/>*/}
 
-              <Footer/>
+              {/* <Footer/> */}
           </div>
       </>
     )

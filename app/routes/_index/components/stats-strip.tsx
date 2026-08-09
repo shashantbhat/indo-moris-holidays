@@ -23,7 +23,7 @@ export default function StatsStrip(){
                 {/* <p className="font-serif text-3xl text-white">17+</p> */}
                 <CountUp
                     from={0}
-                    to={8}
+                    to={18}
                     separator=","
                     direction="up"
                     duration={1}
