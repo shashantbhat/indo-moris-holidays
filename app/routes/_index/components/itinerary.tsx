@@ -129,7 +129,7 @@ export default function Itineraries() {
   return (
     <main className="bg-[#F7F6F3] text-neutral-900">
       {/* ---------- Hero ---------- */}
-      <header className="pt-20 pb-14 px-6 text-center">
+      <header className="pt-32 pb-14 px-6 text-center">
         <div className="mx-auto max-w-xl">
           <span className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
             <span className="h-px w-7 bg-neutral-400" />
@@ -208,14 +208,14 @@ export default function Itineraries() {
                 </ul>
 
                 <div className="mt-6 flex items-center justify-between border-t border-neutral-100 pt-4">
-                  <div>
+                  {/* <div>
                     <p className="text-[11px] uppercase tracking-[0.08em] text-neutral-400">
                       From
                     </p>
                     <p className="font-serif text-lg font-semibold text-neutral-900">
                       {it.priceFrom}
                     </p>
-                  </div>
+                  </div> */}
                   <a
                     href={`/itineraries/${it.slug}`}
                     className="rounded-full border border-neutral-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.06em] text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white"

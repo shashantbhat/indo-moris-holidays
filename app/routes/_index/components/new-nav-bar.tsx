@@ -71,11 +71,14 @@ const NewNavBar = () => {
                         <Link to={"/"} className="hidden sm:block text-xl font-semibold">
                             Indo Moris Holidays
                         </Link>
-                        <img
-                            src={`${CDN}/indo_moris_logo.png`}
-                            alt="Indo Moris Logo"
-                            className="h-6 w-6 !ml-0 block sm:hidden"
-                        />
+                        <Link to={"/"}>
+                            <img
+                                src={`${CDN}/indo_moris_logo.png`}
+                                alt="Indo Moris Logo"
+                                className="h-6 w-6 !ml-0 block sm:hidden"
+                            />
+                        </Link>
+                        
 
                         <div className="mx-4 border-l border-gray-300 h-6"></div>
 

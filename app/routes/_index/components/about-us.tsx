@@ -30,7 +30,7 @@ export default function AboutUs() {
   return (
     <main className="bg-[#F7F6F3] text-neutral-900">
       {/* ---------- Header ---------- */}
-      <header className="pt-20 pb-12 px-6 text-center">
+      <header className="pt-32 pb-12 px-6 text-center">
         <div className="mx-auto max-w-xl">
           <span className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
             <span className="h-px w-7 bg-neutral-400" />
