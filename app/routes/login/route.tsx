@@ -78,11 +78,11 @@ export default function Login() {
 
             <div className="w-full max-w-md">
 
-                <h1 className="text-3xl font-bold">
+                <h1 className="text-2xl md:text-3xl font-bold">
                     Login
                 </h1>
 
-                <p className="mt-2 text-gray-600">
+                <p className="text-sm md:text-base mt-2 text-gray-600">
                     Login to continue with your booking.
                 </p>
 

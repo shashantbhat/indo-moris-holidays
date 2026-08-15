@@ -210,16 +210,16 @@ export default function Register() {
         navigation.state === "submitting";
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 py-12 mt-5">
+        <div className="min-h-screen flex items-center justify-center px-4 py-12  mt-20 md:mt-10">
 
             <div className="w-full max-w-md">
 
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">
+                    <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
                         Create an account
                     </h1>
 
-                    <p className="mt-2 text-gray-600">
+                    <p className="text-sm md:text-base mt-2 text-gray-600">
                         Create an account to continue
                         with your travel booking.
                     </p>
