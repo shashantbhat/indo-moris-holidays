@@ -15,7 +15,7 @@ export class TravelBookingService {
      */
     async createBooking(
         formData: TravelBookingFormData,
-        userInfo?: { email?: string; name?: string; phone?: string }
+        userId: string
     ): Promise<TravelBooking> {
         const totalPassengers = formData.adultsCount + formData.kidsCount;
 
@@ -35,9 +35,7 @@ export class TravelBookingService {
             totalPassengers,
             classType: formData.classType,
             fareType: formData.fareType,
-            userEmail: userInfo?.email || null,
-            userName: userInfo?.name || null,
-            userPhone: userInfo?.phone || null,
+            userId,
             status: "pending",
         };
 
@@ -75,13 +73,13 @@ export class TravelBookingService {
     }
 
     /**
-     * Get bookings by user email
+     * Get bookings by user id
      */
-    async getBookingsByUserEmail(email: string): Promise<TravelBooking[]> {
+    async getBookingsByUserId(userId: string): Promise<TravelBooking[]> {
         const bookings = await this.db
             .select()
             .from(travelBookings)
-            .where(eq(travelBookings.userEmail, email))
+            .where(eq(travelBookings.userId, userId))
             .orderBy(desc(travelBookings.createdAt));
 
         return bookings;
@@ -228,7 +226,7 @@ export class TravelBookingService {
         origin?: string;
         destination?: string;
         status?: string;
-        userEmail?: string;
+        userId?: string;
         dateFrom?: string;
         dateTo?: string;
         tripType?: string;
@@ -250,8 +248,8 @@ export class TravelBookingService {
             conditions.push(eq(travelBookings.status, filters.status));
         }
 
-        if (filters.userEmail) {
-            conditions.push(eq(travelBookings.userEmail, filters.userEmail));
+        if (filters.userId) {
+            conditions.push(eq(travelBookings.userId, filters.userId));
         }
 
         if (filters.dateFrom) {

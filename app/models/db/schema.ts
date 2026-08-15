@@ -1,13 +1,68 @@
 import { pgTable, uuid, varchar, integer, boolean, timestamp, date, text, jsonb } from 'drizzle-orm/pg-core';
 
-// export const users = pgTable('users', {
-//     id: uuid('id').primaryKey().defaultRandom(),
-//     userEmail: varchar('user_email', { length: 255 }).notNull().unique(),
-//     userName: varchar('user_name', { length: 255 }).notNull(),
-//     userPhone: varchar('user_phone', { length: 20 }),
-//     createdAt: timestamp('created_at').defaultNow().notNull(),
-//     updatedAt: timestamp('updated_at').defaultNow().notNull(),
-// });
+export const users = pgTable("users", {
+
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    userEmail: varchar("user_email", {
+
+        length: 255,
+
+    }).notNull().unique(),
+
+    userName: varchar("user_name", {
+
+        length: 255,
+
+    }).notNull(),
+
+    userPhone: varchar("user_phone", {
+
+        length: 20,
+
+    }),
+
+    passwordHash: text("password_hash").notNull(),
+
+    createdAt: timestamp("created_at")
+
+        .defaultNow()
+
+        .notNull(),
+
+    updatedAt: timestamp("updated_at")
+
+        .defaultNow()
+
+        .notNull(),
+
+});
+
+export const sessions = pgTable("sessions", {
+
+    id: uuid("id").primaryKey().defaultRandom(),
+
+    userId: uuid("user_id")
+
+        .notNull()
+
+        .references(() => users.id, {
+
+            onDelete: "cascade",
+
+        }),
+
+    expiresAt: timestamp("expires_at")
+
+        .notNull(),
+
+    createdAt: timestamp("created_at")
+
+        .defaultNow()
+
+        .notNull(),
+
+});
 
 // Simple single table schema for travel bookings
 export const travelBookings = pgTable('travel_bookings', {
@@ -41,10 +96,9 @@ export const travelBookings = pgTable('travel_bookings', {
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
 
-    // Optional user information
-    userEmail: varchar('user_email', { length: 255 }),
-    userName: varchar('user_name', { length: 255 }),
-    userPhone: varchar('user_phone', { length: 20 }),
+    //for logged in user
+    userId: uuid("user_id")
+        .references(() => users.id),
 
     // Additional notes or special requests
     notes: text('notes'),
@@ -53,6 +107,10 @@ export const travelBookings = pgTable('travel_bookings', {
 // Type definitions for TypeScript
 export type TravelBooking = typeof travelBookings.$inferSelect;
 export type NewTravelBooking = typeof travelBookings.$inferInsert;
+export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
+
+export type Session = typeof sessions.$inferSelect;
 
 // Interface matching your React form data
 export interface TravelBookingFormData {
@@ -67,4 +125,10 @@ export interface TravelBookingFormData {
     kidsCount: number;
     classType: 'economy' | 'premium_economy' | 'business' | 'first';
     fareType: 'regular' | 'armed_forces' | 'student' | 'senior_citizen' | 'doctors_nurses';
+}
+
+export interface UserDetails{
+    name: string;
+    email: string;
+    phone_number: string | null;
 }

@@ -1,15 +1,29 @@
 import {
+  json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/cloudflare";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/cloudflare";
 import "./tailwind.css";
-import { redirect } from "@remix-run/node";
 import NewNavBar from "./routes/_index/components/new-nav-bar";
 import Footer from "./components/footer";
+import { getCurrentUser } from "./.server/auth.server";
+
+export async function loader({ request, context }: LoaderFunctionArgs) {
+
+  const user = await getCurrentUser(
+    request,
+    context.cloudflare.env
+  );
+  return json({
+    isLoggedIn: !!user,
+  });
+
+}
 
 // export const loader = async ({ request }) => {
 //   const url = new URL(request.url);
@@ -89,7 +103,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return(
     <div>
-      <NewNavBar/>
+      <NewNavBar />
       <Outlet />
       <Footer/>
     </div>

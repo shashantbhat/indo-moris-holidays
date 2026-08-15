@@ -1,16 +1,16 @@
 import Hero from "./components/hero-section";
 import ChooseUs from "~/routes/_index/components/why-to-choose-us-section";
-import {json, MetaFunction, useActionData} from "@remix-run/react";
+import {json, MetaFunction, redirect, useActionData} from "@remix-run/react";
 import Navbar from "./components/nav-bar";
 import TestimonialCards from "~/routes/_index/components/testimonials";
 import OurExclusive from "~/routes/_index/components/our-exclusive";
-import Footer from "~/components/footer";
-import NewNavBar from "./components/new-nav-bar"
 import TravelBookingForm from "~/routes/booking-form/route";
 import type { ActionFunctionArgs } from "@remix-run/cloudflare";
 import type {TravelBookingFormData} from "~/models/db/schema";
 import {getTravelBookingService} from "~/.server/travel_booking";
 import { sendBookingNotification } from "~/.server/email.server";
+import { getCurrentUser, loginUser } from "~/.server/auth.server";
+import {UserDetails} from "~/models/db/schema"
 
 // export const loader = async () => {
 //   return json({});
@@ -23,10 +23,26 @@ export const meta: MetaFunction = () => {
     ];
 }
 
+
+
 export async function action({ request, context }: ActionFunctionArgs) {
     const travelBookingService = getTravelBookingService(
         context.cloudflare.env
     );
+
+    const user = await getCurrentUser(
+        request,
+        context.cloudflare.env
+    );
+    if (!user) {
+        return redirect("/login");
+    }
+    const userDetail : UserDetails = {
+        name: user.userName,
+        email: user.userEmail,
+        phone_number: user?.userPhone
+    }; 
+    
     try {
         const formData = await request.formData();
         const data: TravelBookingFormData = {
@@ -43,12 +59,12 @@ export async function action({ request, context }: ActionFunctionArgs) {
             fareType: formData.get("fareType") as TravelBookingFormData["fareType"],
         };
 
-        const savedBooking = await travelBookingService.createBooking(data);
+        const savedBooking = await travelBookingService.createBooking(data, user.id);
         
 
         try {
 
-            await sendBookingNotification(context.cloudflare.env,data);
+            await sendBookingNotification(context.cloudflare.env,data,userDetail);
 
         } catch (emailError) {
 

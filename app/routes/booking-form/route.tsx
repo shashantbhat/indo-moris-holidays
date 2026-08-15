@@ -10,17 +10,21 @@ const TravelBookingForm = ({ actionData }: { actionData?: { success?: boolean; e
     const navigation = useNavigation();
     const [showSuccess, setShowSuccess] = useState(false);
     const wasSubmitting = useRef(false);
+    const formRef = useRef<HTMLFormElement>(null);
 
     const isSubmitting = navigation.state === "submitting";
 
     useEffect(() => {
-        if (wasSubmitting.current && navigation.state === "idle" && actionData?.success) {
+        if (actionData?.success) {
             setShowSuccess(true);
-            const timer = setTimeout(() => setShowSuccess(false), 3000);
+            formRef.current?.reset();
+            const timer = setTimeout(() => {
+                setShowSuccess(false);
+            }, 3000);
+
             return () => clearTimeout(timer);
         }
-        wasSubmitting.current = isSubmitting;
-    }, [navigation.state, actionData?.success, isSubmitting]);
+    }, [actionData?.success]);
 
 
     return (
@@ -56,6 +60,7 @@ const TravelBookingForm = ({ actionData }: { actionData?: { success?: boolean; e
                 {/* Main Form Card */}
                 <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-8">
                     <Form
+                        ref={formRef}
                         method="post"
                         className="space-y-6"
                     >

@@ -1,11 +1,16 @@
 import GlassSurface from "~/components/GlassSurface";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
+import { useRouteLoaderData } from "@remix-run/react";
 
 const CDN =  import.meta.env.VITE_CDN_URL;
 const NewNavBar = () => {
+    const rootData = useRouteLoaderData<{
+        isLoggedIn: boolean;
+    }>("root");
     const [isSupported, setIsSupported] = useState(false);
     const [isDarkBackground, setIsDarkBackground] = useState(false);
+    const isUserLoggedin = rootData?.isLoggedIn ?? false;
     
     useEffect(() => {
         const checkSupport = () => {
@@ -93,11 +98,21 @@ const NewNavBar = () => {
                             </a>
                         </div>
                     </div>
-
-                    {/* Right: Sign In */}
-                    <button className="bg-black text-white text-xs sm:text-sm px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-[10px] sm:rounded-xl">
-                        Sign In
-                    </button>
+                    {
+                        isUserLoggedin ? (
+                            <Form method="post" action="/logout">
+                                <button className="bg-black text-white text-xs sm:text-sm px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-[10px] sm:rounded-xl">
+                                    Log Out
+                                </button>
+                            </Form>
+                        ):(
+                            <Link to={'/login'}>
+                                <button className="bg-black text-white text-xs sm:text-sm px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-[10px] sm:rounded-xl">
+                                    Log In
+                                </button>
+                            </Link>
+                        )
+                    }
                 </div>
             </GlassSurface>
         </div>
