@@ -31,7 +31,7 @@ export async function hashPassword(password: string): Promise<string> {
         {
             name: "PBKDF2",
             salt,
-            iterations: 310_000,
+            iterations: 100000,
             hash: "SHA-256",
         },
         keyMaterial,
@@ -41,7 +41,7 @@ export async function hashPassword(password: string): Promise<string> {
     return [
         "pbkdf2",
         "sha256",
-        "310000",
+        "100000",
         toBase64(salt),
         toBase64(new Uint8Array(hash)),
     ].join("$");
