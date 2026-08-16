@@ -133,7 +133,7 @@ const TravelBookingForm = ({ actionData }: { actionData?: { success?: boolean; e
 
                         {/* Dates */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
+                            <div className="flex-col item-center justify-center">
                                 <label className="block text-base sm:text-lg font-semibold mb-3 text-black">Departure Date</label>
                                 <input
                                     type="date"
@@ -142,7 +142,7 @@ const TravelBookingForm = ({ actionData }: { actionData?: { success?: boolean; e
                                     className="w-full border-2 border-gray-200 p-4 rounded-lg text-black text-sm focus:border-black focus:outline-none transition-colors"
                                 />
                             </div>
-                            <div>
+                            <div className="flex-col item-center justify-center">
                                 <label className="block text-base sm:text-lg font-semibold mb-3 text-black">Return Date</label>
                                 <input
                                     type="date"
